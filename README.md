@@ -1,4 +1,4 @@
-Role Name
+Ansible Role: Elasticsearch
 =========
 
 An Ansible Role that installs [Elasticearch](https://www.elastic.co/products/elasticsearch) on Linux.
