@@ -1,0 +1,28 @@
+---
+- name: Create ES group
+  group:
+    name: "{{ es_group }}"
+    state: "present"
+    system: "yes"
+
+- name: Create ES user
+  user:
+    name: "{{ es_user }}"
+    groups: "root,{{ es_group }}"
+    append: "yes"
+    state: "present"
+    create_home: "no"
+    system: "yes"
+
+- name: Create install directory
+  file:
+    path: "{{ es_config_dirs.install }}"
+    state: "directory"
+    owner: "{{ es_user }}"
+    group: "{{ es_group }}"
+
+- name: Set ES home
+  lineinfile:
+    path: "/etc/environment"
+    line: "export ES_HOME={{ es_config_dirs.home }}"
+    create: "yes"

@@ -1,0 +1,12 @@
+---
+- name: Prepare system
+  include: prepare.yml
+
+- name: Install Elasticsearch
+  include: install.yml
+
+- name: Customize Elasticsearch
+  include: customize.yml
+
+- name: Run Elasticsearch as system service
+  include: run.yml

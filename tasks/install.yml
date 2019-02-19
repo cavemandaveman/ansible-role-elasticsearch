@@ -1,0 +1,29 @@
+---
+- name: Download ES binary
+  get_url:
+    url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ es_version }}.tar.gz"
+    dest: "/tmp/elasticsearch-{{ es_version }}.tar.gz"
+
+- name: Unpack ES binary
+  unarchive:
+    remote_src: "yes"
+    src: "/tmp/elasticsearch-{{ es_version }}.tar.gz"
+    dest: "{{ es_config_dirs.install }}/"
+    owner: "{{ es_user }}"
+    group: "{{ es_group }}"
+    creates: "{{ es_config_dirs.install }}/elasticsearch-{{ es_version }}"
+
+- name: Fix permissions
+  file:
+    path: "{{ es_config_dirs.install }}/elasticsearch-{{ es_version }}"
+    owner: "{{ es_user }}"
+    group: "{{ es_group }}"
+    recurse: "yes"
+
+- name: Create ES symlink
+  file:
+    src: "elasticsearch-{{ es_version }}"
+    path: "{{ es_config_dirs.home }}"
+    state: "link"
+    owner: "{{ es_user }}"
+    group: "{{ es_group }}"

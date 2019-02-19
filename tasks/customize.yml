@@ -1,0 +1,14 @@
+---
+- name: Copy elasticsearch.yml template
+  template:
+    src: "templates/elasticsearch.yml.j2"
+    dest: "{{ es_config_dirs.home }}/config/elasticsearch.yml"
+    owner: "{{ es_user }}"
+    group: "{{ es_group }}"
+
+- name: Copy jvm.options template
+  template:
+    src: "templates/jvm.options.j2"
+    dest: "{{ es_config_dirs.home }}/config/jvm.options"
+    owner: "{{ es_user }}"
+    group: "{{ es_group }}"
