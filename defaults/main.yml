@@ -5,8 +5,8 @@ es_config_dirs:
   install: "/opt/elasticsearch/releases"
   home: "/opt/elasticsearch/releases/current"
 
-es_user: svc_nifi
-es_group: svc_nifigrp
+es_user: elasticsearch
+es_group: elasticsearch
 
 es_properties:
   cluster_name: my-application
