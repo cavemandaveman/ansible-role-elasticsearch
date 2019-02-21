@@ -1,10 +1,11 @@
 ---
-- name: Copy elasticsearch.yml template
-  template:
-    src: "templates/elasticsearch.yml.j2"
-    dest: "{{ es_config_dirs.home }}/config/elasticsearch.yml"
-    owner: "{{ es_user }}"
-    group: "{{ es_group }}"
+- name: Update Elasticsearch conf file
+  lineinfile:
+    path: "{{ es_config_dirs.home }}/config/elasticsearch.yml"
+    line: "{{ item.key }}: {{ item.value }}"
+    regexp: "^#?{{ item.key }}"
+    firstmatch: "yes"
+  with_dict: "{{ es_properties }}"
 
 - name: Copy jvm.options template
   template:

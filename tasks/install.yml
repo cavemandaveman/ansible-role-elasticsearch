@@ -13,13 +13,6 @@
     group: "{{ es_group }}"
     creates: "{{ es_config_dirs.install }}/elasticsearch-{{ es_version }}"
 
-- name: Fix permissions
-  file:
-    path: "{{ es_config_dirs.install }}/elasticsearch-{{ es_version }}"
-    owner: "{{ es_user }}"
-    group: "{{ es_group }}"
-    recurse: "yes"
-
 - name: Create ES symlink
   file:
     src: "elasticsearch-{{ es_version }}"

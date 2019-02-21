@@ -1,7 +1,7 @@
 Ansible Role: Elasticsearch
 =========
 
-An Ansible Role that installs [Elasticearch](https://www.elastic.co/products/elasticsearch) on Linux.
+An Ansible Role that installs [Elasticsearch](https://www.elastic.co/products/elasticsearch) on Linux.
 
 Requirements
 ------------

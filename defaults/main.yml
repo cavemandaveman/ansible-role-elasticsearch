@@ -1,5 +1,5 @@
 ---
-es_version: "5.6.14"
+es_version: "5.6.15"
 
 es_config_dirs:
   install: "/opt/elasticsearch/releases"
@@ -8,22 +8,11 @@ es_config_dirs:
 es_user: elasticsearch
 es_group: elasticsearch
 
+# Specify any property from elasticsearch.yml here. Leave blank for defaults.
+# See https://github.com/elastic/elasticsearch/blob/master/distribution/src/config/elasticsearch.yml for current options.
 es_properties:
-  cluster_name: my-application
-  node_name: node-1
-  node_attr_rack: r1
-  path_data: "{{ es_config_dirs.home }}/data"
-  path_logs: "{{ es_config_dirs.home }}/logs"
-  bootstrap_memory_lock: false
-  network_host: 127.0.0.1
-  http_port: 9200
-  # If true, the 3 properties following this will be set
-  cluster_config_enabled: false
-  discovery_zen_ping_unicast_hosts: ["127.0.0.1", "[::1]"]
-  discovery_zen_minimum_master_nodes: 3
-  gateway_recover_after_nodes: 3
-  action_destructive_requires_name: true
+  path.data: "{{ es_config_dirs.home }}/data"
+  path.logs: "{{ es_config_dirs.home }}/logs"
 
 es_jvm_options:
-  initial_heap: 2g
-  max_heap: 2g
+  heap_size: 2g

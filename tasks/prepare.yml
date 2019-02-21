@@ -8,7 +8,7 @@
 - name: Create ES user
   user:
     name: "{{ es_user }}"
-    groups: "root,{{ es_group }}"
+    groups: "{{ es_group }}"
     append: "yes"
     state: "present"
     create_home: "no"
